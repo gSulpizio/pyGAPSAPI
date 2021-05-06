@@ -5,7 +5,7 @@ from fastapi.responses import HTMLResponse
 from starlette.middleware.cors import CORSMiddleware
 
 from . import __version__
-from .BETtools import getBETArea
+from .bet_tools import getBETArea
 from .model import BETInput, BETResponse
 
 app = FastAPI(
