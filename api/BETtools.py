@@ -1,4 +1,3 @@
-from func_timeout import func_set_timeout
 import pygaps
 
 
@@ -22,8 +21,8 @@ def buildIsotherm(inputParams):
     return isotherm
 
 
-@func_set_timeout(60)
 def getBETArea(inputparams):
+    
     isotherm = buildIsotherm(inputparams)
     params = pygaps.area_BET(isotherm)
     return params
