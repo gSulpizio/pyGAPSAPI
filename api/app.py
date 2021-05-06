@@ -53,19 +53,7 @@ def read_version():
 def predict_xrd(parameters: BETInput):
     """Use pyGAPS to fit BET curves for isotherms"""
     try:
-        return getBETArea(
-            BETInput.inputPressure,
-            BETInput.inputLoading,
-            BETInput.inputPressureMode,
-            BETInput.inputPressureUnit,
-            BETInput.inputMaterialBasis,
-            BETInput.inputMaterialUnit,
-            BETInput.inputLoadingBasis,
-            BETInput.inputLoadingUnit,
-            BETInput.inputMaterial,
-            BETInput.inputAdsorbate,
-            BETInput.inputTemperature,
-        )
+        return getBETArea(parameters)
     except Exception as excep:
         logger = logging.getLogger("api")
         logger.error("BET Fitting failed {}".format(excep))

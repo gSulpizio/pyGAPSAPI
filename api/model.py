@@ -5,17 +5,17 @@ from typing import Optional
 class BETInput(BaseModel):
     """Default BET Fitting response"""
 
-    inputPressure: list
-    inputLoading: list
-    inputPressureMode: str
-    inputPressureUnit: str
-    inputMaterialBasis: str
-    inputMaterialUnit: str
-    inputLoadingBasis: str
-    inputLoadingUnit: str
-    inputMaterial: str
-    inputAdsorbate: str
-    inputTemperature: int
+    pressure: list
+    loading: list
+    pressureMode: str
+    pressureUnit: str
+    materialBasis: str
+    materialUnit: str
+    loadingBasis: str
+    loadingUnit: str
+    material: str
+    adsorbate: str
+    temperature: int
 
 
 class BETResponse(BaseModel):
