@@ -1,27 +1,22 @@
+import logging
+
 from fastapi import Depends, FastAPI, HTTPException
 from fastapi.responses import HTMLResponse
 from starlette.middleware.cors import CORSMiddleware
-from BETtools import getBETArea
-import logging
 
-
-from model import BETInput, BETResponse
-
-# from . import __version__
-
+from . import __version__
+from .bet_tools import getBETArea
+from .model import BETInput, BETResponse
 
 app = FastAPI(
     title="pyGAPS BET fitting",
     description="Offers a fit for BET surface calculation",
-    # version=__version__,
+    version=__version__,
 )
 # version?
 
 app.add_middleware(
-    CORSMiddleware,
-    allow_credentials=True,
-    allow_methods=["*"],
-    allow_headers=["*"],
+    CORSMiddleware, allow_credentials=True, allow_methods=["*"], allow_headers=["*"],
 )
 
 

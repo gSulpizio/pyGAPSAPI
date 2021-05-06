@@ -4,23 +4,11 @@ from fastapi.testclient import TestClient
 import json
 
 
-from BETtools import getBETArea
-from app import app
-from model import BETInput
-
+from api.app import app
+from api.model import BETInput
+from .utils import x, y
 
 client = TestClient(app)
-
-x = list(map(lambda x: x / 100, list(range(0, 101))))
-
-
-def langmuirEquation(nm, KH):
-    return lambda p: (nm * KH * p) / (1 + KH * p)
-
-
-loading = langmuirEquation(2, 5)
-
-y = list(map(loading, x))
 
 
 inputParams2 = {
@@ -52,27 +40,16 @@ inputParams = BETInput(
 )
 
 
-def testFitAPI(inputParams):
+def testFitAPI():
     """Test fitting endpoint"""
-    response = client.post("/BETFit", json=json.dumps(inputParams.__dict__))
+    response = client.post("/BETFit", json=dict(inputParams))
     print(response.status_code)
 
     body = json.loads(response.text)
     print(body)
 
 
-def testFit(inputParams):
-    """Test fitting function"""
-    response = getBETArea(inputParams)
-    print(response)
-
-
 def testReadMain():
     response = client.get("/")
     assert response.status_code == 200
 
-
-if __name__ == "__main__":
-    testFit(inputParams)
-    testFitAPI(inputParams)
-    testReadMain()
