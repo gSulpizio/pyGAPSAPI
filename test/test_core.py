@@ -1,4 +1,4 @@
-from api.bet_tools import getBETArea
+from api.bet_tools import get_BET_area
 from api.model import BETInput
 from .utils import x, y
 import numpy as np
@@ -18,7 +18,7 @@ inputParams = BETInput(
 )
 
 
-def testFit():
+def test_fit():
     """Test fitting function"""
-    response = getBETArea(dict(inputParams))
+    response = get_BET_area(dict(inputParams))
     assert np.abs(response["area"] - 3668.673520004670) < 0.1

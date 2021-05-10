@@ -1,7 +1,7 @@
 import pygaps
 
 
-def buildIsotherm(inputParams):
+def build_isotherm(inputParams):
     isotherm = pygaps.PointIsotherm(
         pressure=inputParams["pressure"],  # pressure here
         loading=inputParams["loading"],  # loading here
@@ -21,8 +21,8 @@ def buildIsotherm(inputParams):
     return isotherm
 
 
-def getBETArea(inputparams):
+def get_BET_area(inputparams):
 
-    isotherm = buildIsotherm(inputparams)
+    isotherm = build_isotherm(inputparams)
     params = pygaps.area_BET(isotherm)
     return params

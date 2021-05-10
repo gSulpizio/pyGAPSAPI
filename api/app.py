@@ -5,7 +5,7 @@ from fastapi.responses import HTMLResponse
 from starlette.middleware.cors import CORSMiddleware
 
 from . import __version__
-from .bet_tools import getBETArea
+from .bet_tools import get_BET_area
 from .model import BETInput, BETResponse
 
 app = FastAPI(
@@ -16,7 +16,10 @@ app = FastAPI(
 # version?
 
 app.add_middleware(
-    CORSMiddleware, allow_credentials=True, allow_methods=["*"], allow_headers=["*"],
+    CORSMiddleware,
+    allow_credentials=True,
+    allow_methods=["*"],
+    allow_headers=["*"],
 )
 
 
@@ -48,7 +51,7 @@ def read_version():
 def predict_xrd(parameters: BETInput):
     """Use pyGAPS to fit BET curves for isotherms"""
     try:
-        return getBETArea(parameters)
+        return get_BET_area(parameters)
     except Exception as excep:
         logger = logging.getLogger("api")
         logger.error("BET Fitting failed {}".format(excep))

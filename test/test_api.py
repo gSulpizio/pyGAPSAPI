@@ -40,7 +40,7 @@ inputParams = BETInput(
 )
 
 
-def testFitAPI():
+def test_fit_api():
     """Test fitting endpoint"""
     response = client.post("/BETFit", json=dict(inputParams))
     print(response.status_code)
@@ -52,4 +52,3 @@ def testFitAPI():
 def testReadMain():
     response = client.get("/")
     assert response.status_code == 200
-

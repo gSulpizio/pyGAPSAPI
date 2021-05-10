@@ -3,10 +3,10 @@ import numpy as np
 x = list(np.linspace(0, 1, 100))
 
 
-def langmuirEquation(nm, KH):
+def langmuir_equation(nm, KH):
     return lambda p: (nm * KH * p) / (1 + KH * p)
 
 
-loading = langmuirEquation(2, 5)
+loading = langmuir_equation(2, 5)
 
 y = list(map(loading, x))
